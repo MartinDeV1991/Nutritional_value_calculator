@@ -61,7 +61,7 @@ def train_model():
     model = build_model(num_classes)
 
     checkpoint = ModelCheckpoint(
-        "fruit_model.keras", monitor="val_accuracy", save_best_only=True, mode="max"
+        "model.keras", monitor="val_accuracy", save_best_only=True, mode="max"
     )
 
     model.fit(

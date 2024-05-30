@@ -63,14 +63,14 @@ def find_nutritional_content(food_name):
     if food_name.lower() in nutritional_value:
         food_info = nutritional_value[food_name.lower()]
         nutritional_content = {}
-        
+
         for nutrient, values in food_info["per_100g"].items():
             per_100g_unit = nutrition_weights.get(nutrient, "")
             nutritional_content[nutrient] = {"per_100g": (values, per_100g_unit)}
 
         for nutrient, values in food_info["per_item"].items():
-                per_item_unit = nutrition_weights.get(nutrient, "")
-                nutritional_content[nutrient]["per_item"] = (values, per_item_unit)
+            per_item_unit = nutrition_weights.get(nutrient, "")
+            nutritional_content[nutrient]["per_item"] = (values, per_item_unit)
 
         return nutritional_content
     else:
@@ -85,7 +85,9 @@ def display_nutritional_value(food_item, nutritional_info):
             per_100g_value, per_100g_unit = values["per_100g"]
             per_item_value, per_item_unit = values["per_item"]
             print(f"{nutrient.capitalize()} per 100g: {per_100g_value} {per_100g_unit}")
-            print(f"{nutrient.capitalize()} per item: {round(per_item_value / weight * 100, 2)} {per_item_unit}")
+            print(
+                f"{nutrient.capitalize()} per item: {round(per_item_value / weight * 100, 2)} {per_item_unit}"
+            )
 
     else:
         print("Nutritional information not found for the specified food.")
@@ -105,7 +107,8 @@ def main(img_path):
             print(f"Predicted: {food_item} with confidence: {confidence:.2f}")
             nutrition_info = get_nutrition_info(food_item)
             print(f"Nutrition info: {nutrition_info}")
+    return food_item
 
-img_path = "Images/image3.jpg"
-main(img_path)
 
+# img_path = "Images/test_image.png"
+# main(img_path)
