@@ -7,6 +7,7 @@ from keras.applications.mobilenet_v2 import (
 from keras.preprocessing import image
 from keras.models import load_model
 import numpy as np
+from PIL import Image
 
 from train_model import prepare_data_generators
 from nutrional_value import nutritional_value, nutrition_weights, food_weights
@@ -107,7 +108,7 @@ def main(img_path):
             print(f"Predicted: {food_item} with confidence: {confidence:.2f}")
             nutrition_info = get_nutrition_info(food_item)
             print(f"Nutrition info: {nutrition_info}")
-    return food_item
+    return [nutrition, food_item]
 
 
 # img_path = "Images/test_image.png"
